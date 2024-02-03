@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
 
-function App() {
+function FetchRecord() {
+  const [record, setRecord] = useState([]);
+
+  useEffect(() => {
+   // fetch("https://data.police.uk/api/crime-categories")
+    fetch("https://data.police.uk/api/forces")  
+  // fetch("https://data.police.uk/api/crimes-no-location?category=all-crime&force=leicestershire")  
+   .then((response) => response.json())
+      .then((data) => setRecord(data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <table>
+        <tr>  
+        <td>
+          {record.map((list, index) => (
+            <li key={index}>{list.name}</li>
+          ))}
+          ;
+        </td>
+        </tr>
+      </table>
     </div>
   );
 }
-
-export default App;
+export default FetchRecord;

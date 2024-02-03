@@ -1,0 +1,91 @@
+.App{
+        text-align: center;
+
+    }
+.container{
+    max-width: 500px;
+    font-size: 15px;
+    margin: 0 auto;
+}
+.list{
+    text-align: left;
+}
+.container{
+   
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    font-size: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    background-color: lavender;
+    width: 400px;
+    min-height: 300px;
+
+}
+.list{
+    text-align: left;
+
+
+}
+.list ul {
+    padding-left: 0px;
+}
+.list ul li{
+    /* background-color: aquamarine; */
+    color: black;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 20px;
+    position: relative;
+    text-decoration: underline;
+}
+.DeleteBtn{
+    position: absolute;
+   top: 5px;
+   right: 5px;
+   background-color: rgb(159, 31, 31) ;
+   border-radius: 5px;
+   color: white;
+   height: 30px;
+}
+.EditBtn{
+    background-color:rgb(23, 93, 23);
+    position: absolute;
+    top: 5px;
+    right: 40px;
+    border-radius: 5px;
+    color: white;
+    height: 30px;
+}
+
+.addBtn{
+    margin-left: 5px;
+    border-radius: 5px;
+    background-color: rgb(253, 253, 253);
+    height: 30px;
+    width: 30px;
+
+}
+.updateBtn{ 
+    
+    margin-left: 5px;
+    border-radius: 5px;
+    background-color: rgb(253, 253, 253);
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+
+}
+.addBtn:hover{
+    background-color: rgb(113, 199, 199);
+}
+
+input{
+   width: 250px;
+   height: 25px;
+   border-radius: 5px;
+}
+input:hover{
+    background-color: rgb(113, 199, 199);
+}
