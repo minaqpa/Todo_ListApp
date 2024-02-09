@@ -1,12 +1,8 @@
-.App{
+ .App{
         text-align: center;
 
     }
-.container{
-    max-width: 500px;
-    font-size: 15px;
-    margin: 0 auto;
-}
+
 .list{
     text-align: left;
 }
@@ -18,8 +14,10 @@
     padding-bottom: 20px;
     border-radius: 10px;
     background-color: lavender;
-    width: 400px;
+    max-width:400px;
     min-height: 300px;
+    font-size: 15px;
+    margin: 0 auto;
 
 }
 .list{
@@ -28,7 +26,7 @@
 
 }
 .list ul {
-    padding-left: 0px;
+    padding-left:0;
 }
 .list ul li{
     /* background-color: aquamarine; */

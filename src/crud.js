@@ -4,25 +4,26 @@ import { MdAddTask } from "react-icons/md";
 import { TbTrashXFilled } from "react-icons/tb";
 import { FaEdit } from "react-icons/fa";
 import { GrUpdate } from "react-icons/gr";
-// import { List, containerClasses } from "@mui/material";
 
-function CRUD() {
-  const [input, setInput] = useState("");
+function Crud() {
+  const [inputValue, setInputValue] = useState("");
   const [list, setList] = useState([]);
-  // console.log(list);
-  const [update, setUpdate] = useState();
+  const [updateIndex, setUpdateIndex] = useState();
   const [btn, btnUpdate] = useState(false);
 
   const handleInput = (e) => {
-    setInput(e.target.value);
+    setInputValue(e.target.value);
   };
 
-  const handleTask = (e) => {
+  // Add task
+  const addTask = (e) => {
     // e.preventDefault();
+    // use input or inputValue
     var name = document.getElementById("name").value;
+    // const input = inputValue.trim()
     for (var i = 0; i < list.length; i++) {
       // console.log(list);
-      if (list[i] === input) {
+      if (list[i] === inputValue) {
         alert("Value Already Exist");
         return false;
       }
@@ -31,36 +32,46 @@ function CRUD() {
       alert("Input Empty ! please fill");
       return false;
     } else {
-      setList([...list, input]);
-      setInput("");
+      setList([...list, inputValue]);
+      setInputValue("");
     }
   };
   const handleUpdate = (e) => {
-    if (input === "") {
-      alert("Name must be filled out");
+    for (var i = 0; i < list.length; i++) {
+      // console.log(list);
+      if (list[i] === inputValue) {
+        alert("Value Already Exist");
+        return false;
+      }
+    }
+    if (inputValue === "") {
+      alert("Input Empty ! please fill");
       return false;
     } else {
-      list.splice(update, 1, input);
-      setInput("");
-      btnUpdate("");
-      // e.preventDefault();
+      list.splice(updateIndex, 1, inputValue);
+      setInputValue("");
+      // btnUpdate should pass boolean value i.e false
+      // btnUpdate("");
+      btnUpdate(false);
+      // e.preventDefault(  );
     }
   };
   const handleDelete = (i) => {
     var alertMessage = window.confirm("are you sure to delete");
     if (alertMessage) {
-      const filterList = list.filter((element, index) => index !== i);
-      //console.log("filterList", filterList);
+      const filterList = list.filter((element, index) => index !==  i);
+   
+      console.log("filterList", filterList);
       setList(filterList);
     }
   };
   const handleEdit = (i) => {
     // const filterList = list.filter((element) => element === list[i]);
-    console.log(i);
+    // console.log(i);
     const filterList = list.filter((p, index) => index === i);
     console.log (filterList);
-    setInput(filterList[0]);
-    setUpdate(i);
+    setInputValue(filterList[0]);
+    setUpdateIndex(i);
     btnUpdate(true);
 
     //setList(filterList)
@@ -71,10 +82,12 @@ function CRUD() {
     if (btn) {
       handleUpdate()
     } else {
-      handleTask()
+      addTask()
     }
   
   }
+
+  console.log('update', updateIndex)
   return (
     <div className="App">
       <h2>Todo List</h2>
@@ -85,7 +98,7 @@ function CRUD() {
               className="inputfield"
               type="text"
               id="name"
-              value={input}
+              value={inputValue}
               onChange={(e) => handleInput(e)}
             />
             {btn ? (
@@ -97,7 +110,7 @@ function CRUD() {
                 <GrUpdate />
               </button>
             ) : (
-              <button type="button" className="addBtn" onClick={handleTask}>
+              <button type="button" className="addBtn" onClick={addTask}>
                 <MdAddTask />
               </button>
             )}
@@ -105,7 +118,7 @@ function CRUD() {
         </form>
         <div className="list">
           <ul>
-            {list.map((item, i) => (
+            {list.map((item, i) => 
               <li key={i}>
                 {item}
                 <button className="DeleteBtn" onClick={() => handleDelete(i)}>
@@ -115,11 +128,11 @@ function CRUD() {
                   <FaEdit />
                 </button>
               </li>
-            ))}
+            )}
           </ul>
         </div>
       </div>
     </div>
   );
 }
-export default CRUD;
+export default Crud;
